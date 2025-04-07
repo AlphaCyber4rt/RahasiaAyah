@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nasehat Ayah untuk Putri</title>
+    <!-- Google Fonts Roboto -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background: linear-gradient(135deg, #e6f7ff, #ffffff);
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .amplop {
+            background: white;
+            border-radius: 25px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            width: 95%;
+            max-width: 500px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            z-index: 2;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .judul-small {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #1a237e;
+            background: #fff;
+            padding: 5px 10px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            animation: glowing 2s infinite alternate, floating 4s infinite ease-in-out;
+        }
+        @keyframes glowing {
+            0% {
+                text-shadow: 0 0 5px #ffeb3b, 0 0 10px #ffeb3b, 0 0 15px #ffeb3b;
+            }
+            100% {
+                text-shadow: 0 0 15px #ffeb3b, 0 0 30px #ffeb3b, 0 0 45px #ffeb3b;
+            }
+        }
+        @keyframes floating {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        .audio-controls button {
+            background: #fff;
+            color: #1a237e;
+            border: 2px solid #1a237e;
+            padding: 5px 10px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .audio-controls button:hover {
+            background: #1a237e;
+            color: white;
+        }
+        .judul {
+            color: #1a237e;
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        .instruksi {
+            text-align: center;
+            color: #555;
+            font-size: 1rem;
+            margin-bottom: 25px;
+        }
+        .step {
+            display: none;
+            opacity: 0;
+            transform: translateX(50px);
+            padding: 20px;
+            border-radius: 15px;
+            background: #f0f8ff;
+            transition: all 0.5s ease;
+        }
+        .step.active {
+            display: block;
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .emoji-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .emoji {
+            font-size: 3rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .tombol {
+            background: #1a237e;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        @media (max-width: 480px) {
+            .judul { font-size: 1.5rem; }
+            .emoji { font-size: 2.5rem; }
+            .tombol { padding: 10px 20px; }
+        }
+        .heart-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .heart-rain span {
+            position: absolute;
+            bottom: 100%;
+            font-size: 24px;
+            opacity: 0.9;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="amplop">
+        <!-- Header Baru -->
+        <div class="header">
+            <p id="animatedText" class="judul-small">AlphaCyber4rt</p>
+            <!-- Kontrol Audio -->
+            <div class="audio-controls">
+                <button onclick="toggleAudio()" id="audioButton">🎵 Putar Musik</button>
+                <audio id="audio" src="https://alphacyber4rt.github.io/File/DJikhlas.mp3" preload="auto"></audio>
+            </div>
+        </div>
+        <h1 class="judul">💌 NASIHAT UNTUK PUTRIKU 💌</h1>
+        <p class="instruksi">Klik untuk membaca nasehat penuh cinta dari ayahmu… ❤️</p>
+        <!-- LANGKAH 1 -->
+        <div class="step active" id="step1" onclick="lanjut(2)">
+            <p style="font-size:1.1em">📅 Untukmu, Anakku Tersayang:<br>
+            Kamu adalah hadiah terindah dalam hidupku.</p>
+            <div class="emoji-container">
+                <div class="emoji" onclick="event.stopPropagation(); animateEmoji('👇')">👇</div>
+            </div>
+            <button class="tombol" onclick="event.stopPropagation(); playAudio(); lanjut(2)">Buka Nasehat Pertama 📬</button>
+        </div>
+        <!-- BAB 1 -->
+        <div class="step" id="step2" onclick="lanjut(3)">
+            <h3>💬 NASEHAT PERTAMA: MENJADI DIRIMU SENDIRI</h3>
+            <p style="font-size:0.9em">
+                "Putriku, jangan pernah berusaha menjadi seperti orang lain..."<br>
+                🌟 Jadilah dirimu sendiri, karena keunikanmu adalah kekuatanmu.<br>
+                💪 Jangan takut salah, karena kesalahan adalah guru terbaik.<br>
+                🌈 Ingatlah, kamu dilahirkan untuk bersinar dengan caramu sendiri.<br>
+                <small>"Dunia membutuhkan kelembutan dan kekuatanmu. Jadilah wanita yang tangguh namun tetap lembut."</small>
+            </p>
+            <div class="emoji-container">
+                <div class="emoji" onclick="event.stopPropagation(); animateEmoji('🌟')">🌟</div>
+            </div>
+            <button class="tombol" onclick="event.stopPropagation(); lanjut(3)">Lanjut ke Nasehat Kedua ❤️</button>
+        </div>
+        <!-- BAB 2 -->
+        <div class="step" id="step3" onclick="lanjut(4)">
+            <h3>🎢 NASEHAT KEDUA: PILIH PRIORITASMU DENGAN BIJAK</h3>
+            <p style="font-size:0.9em">
+                "Hidup ini penuh pilihan, Nak..."<br>
+                💭 Pilihlah hal-hal yang membuatmu bahagia tanpa melupakan prinsip.<br>
+                🛡️ Lindungi hatimu dari orang-orang yang tidak tulus.<br>
+                🌱 Tanamkan nilai-nilai baik dalam hidupmu, karena itu akan menjadi fondasi masa depanmu.<br>
+                <em>"Jangan terburu-buru menemukan cinta, karena cinta yang tepat akan datang pada waktunya."</em>
+            </p>
+            <div class="emoji-container">
+                <div class="emoji" onclick="event.stopPropagation(); animateEmoji('🛡️')">🛡️</div>
+            </div>
+            <button class="tombol" onclick="event.stopPropagation(); lanjut(4)">Nasehat Ketiga Menantimu 💖</button>
+        </div>
+        <!-- BAB 3 -->
+        <div class="step" id="step4">
+            <h3 style="color:#1a237e">🌅 NASEHAT KETIGA: JANGAN PERNAH BERHENTI BERMIMPI</h3>
+            <div style="text-align:left;padding:10px;font-size:0.9em">
+                <p>🌌 Impianmu adalah sayapmu:<br>
+                <small>"Terbanglah setinggi mungkin, karena langit tidak pernah menjadi batas."</small></p>
+                <p>📚 Pelajari segala sesuatu dengan rasa ingin tahu:<br>
+                <small>"Pengetahuan adalah kunci untuk membuka pintu-pintu dunia."</small></p>
+                <p>💪 Jangan pernah menyerah:<br>
+                <small>"Setiap badai pasti berlalu, dan pelangi selalu ada di ujungnya."</small></p>
+            </div>
+            <div class="emoji-container">
+                <div class="emoji" onclick="animateEmoji('✨')">✨</div>
+            </div>
+            <div style="border-top:2px dashed #1a237e;padding:15px">
+                <p style="font-size:0.9em">❤️ Intinya:<br>
+                Ayah mungkin tidak bisa selalu ada di sisimu...<br>
+                <span style="font-size:1.2em">Tapi ingatlah, aku selalu bangga padamu, apapun yang kamu pilih. Jadilah wanita hebat, kuat, dan penuh kasih sayang. 🌸</span></p>
+            </div>
+        </div>
+    </div>
+    <!-- Efek Hujan Hati -->
+    <div class="heart-rain" id="heartRain"></div>
+    <script>
+        let currentStep = 1;
+        const totalSteps = 4;
+        let isPlaying = false;
+        const audio = document.getElementById('audio');
+        const audioButton = document.getElementById('audioButton');
+        function lanjut(nomor) {
+            if (nomor > totalSteps) return;
+            document.querySelectorAll('.step').forEach(step => {
+                step.style.display = 'none';
+                step.classList.remove('active');
+            });
+            const target = document.getElementById('step' + nomor);
+            setTimeout(() => {
+                target.style.display = 'block';
+                setTimeout(() => target.classList.add('active'), 50);
+            }, 300);
+            currentStep = nomor;
+        }
+        function animateEmoji(emoji) {
+            const element = document.createElement('div');
+            element.textContent = emoji;
+            element.style.cssText = `
+                position: fixed;
+                font-size: 2rem;
+                left: ${Math.random() * 100}vw;
+                top: ${Math.random() * 100}vh;
+                animation: float 2s linear;
+                color: #1a237e;
+                opacity: 0.7;
+            `;
+            document.body.appendChild(element);
+            setTimeout(() => element.remove(), 2000);
+        }
+        // Kontrol audio
+        function playAudio() {
+            audio.play()
+                .then(() => {
+                    isPlaying = true;
+                    audioButton.textContent = "⏸️ Jeda Musik";
+                })
+                .catch(error => {
+                    console.error("Gagal memutar audio:", error);
+                    alert("Aktifkan suara/browser untuk memutar audio!");
+                });
+        }
+        function toggleAudio() {
+            if (isPlaying) {
+                audio.pause();
+                audioButton.textContent = "🎵 Putar Musik";
+                isPlaying = false;
+            } else {
+                playAudio();
+            }
+        }
+        document.querySelector('.tombol').addEventListener('click', () => {
+            if (!isPlaying) playAudio();
+        });
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('step1').classList.add('active');
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                const judul = document.querySelector('.judul');
+                const rect = judul.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2 - 10;
+                const centerY = rect.top - 30;
+                heart.style.left = `${centerX}px`;
+                heart.style.top = `${centerY}px`;
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 3000);
+            }, 1000);
+            startContinuousHeartRain();
+        });
+        const heartEmojis = ['❤️', '💙', '💜', '💛', '💚', '🧡', '💖', '💘', '💝'];
+        function startContinuousHeartRain() {
+            setInterval(() => {
+                createHeart();
+            }, 200);
+        }
+        function createHeart() {
+            const heartContainer = document.getElementById("heartRain");
+            const heart = document.createElement("span");
+            heart.innerHTML = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+            heart.style.left = Math.random() * window.innerWidth + "px";
+            heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+            heartContainer.appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
+        }
+    </script>
+    <!-- Tambahkan Skrip Eksternal -->
+    <script src='http://tateluproject.googlecode.com/files/lovingheart.js' type='text/javascript'></script>
+</body>
+</html>
